@@ -7,9 +7,12 @@
 package de.geisslerbenjamin.jmap.configuration.interfaces;
 
 /**
- *
  * @author Benjamin
  */
 public interface ConfigurationInterface {
     public ImageInterface getImage();
+
+    public DataSourceInterface getDataSource();
+
+    public LanguageInterface getLanguage();
 }

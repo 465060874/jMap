@@ -3,7 +3,10 @@ package de.geisslerbenjamin.jmap.configuration;
 import de.geisslerbenjamin.jmap.configuration.interfaces.ImageInterface;
 
 /**
- * Created by Benjamin on 23.01.14.
+ * Configuration values for the background image.
+ *
+ * @author Benjamin Geißler <benjamin.geissler@gmail.com>
+ * @licence MIT
  */
 public class Image implements ImageInterface {
     private String path;

@@ -1,4 +1,10 @@
 image:
-    path: "D:\\Projekte\\Java\\map\\Data\\map.jpg"
+    path: "D:\\Projekte\\Java\\map\\Data\\Full.jpg"
     width: 1000
-    height: 200
+    height: 800
+dataSource:
+    file: "D:\\Projekte\\Java\\map\\Data\\Data.mdb"
+    read: "T_MapDisplay"
+    write: "T_Map"
+language:
+    country: "DE"

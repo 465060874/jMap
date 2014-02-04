@@ -1,52 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package de.geisslerbenjamin.jmap.data;
 
-import de.geisslerbenjamin.jmap.data.interfaces.ElementInterface;
-import de.geisslerbenjamin.jmap.drawable.Rectangle;
+import de.geisslerbenjamin.jmap.data.interfaces.DataContainerInterface;
+import de.geisslerbenjamin.jmap.drawable.interfaces.DrawableInterface;
+
 import java.util.ArrayList;
-import javafx.scene.paint.Color;
 
 /**
+ * Data container holding all drawables.
  *
- * @author Benjamin
+ * @author Benjamin Geißler <benjamin.geissler@gmail.com>
+ * @licence MIT
  */
-public class DataContainer {
+public class DataContainer implements DataContainerInterface {
     private static DataContainer self;
-    private ArrayList<ElementInterface> elements;
+    private ArrayList<DrawableInterface> drawables;
 
     private DataContainer() {
-        this.elements = new ArrayList<ElementInterface>();
+        this.clear();
     }
-    
+
     public static DataContainer get() {
-        if (self == null) {            
-            self = new DataContainer();          
+        if (self == null) {
+            self = new DataContainer();
         }
-        
+
         return self;
     }
-    
-    public DataContainer addElement(ElementInterface element) {
-        this.elements.add(element);
+
+    @Override
+    public DataContainerInterface add(DrawableInterface drawable) {
+        this.drawables.add(drawable);
         return this;
     }
-    
-    public ElementInterface getElementById(int id) throws Exception {
-        for (ElementInterface element : this.elements) {
-             if (element.getId() == id) {
-                 return element;
-             }   
-        }
-        
-        throw new Exception("Missing element id!");
+
+    @Override
+    public DataContainerInterface set(ArrayList<DrawableInterface> drawables) {
+        this.drawables = drawables;
+        return this;
     }
-    
-    public ArrayList<ElementInterface> getAll() {
-        return this.elements;
+
+    @Override
+    public ArrayList<DrawableInterface> all() {
+        return this.drawables;
+    }
+
+    @Override
+    public DrawableInterface get(int id) {
+        for (DrawableInterface drawable : this.drawables) {
+            if (drawable.getId() == id) {
+                return drawable;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public void clear() {
+        this.drawables = new ArrayList<>();
     }
 }
