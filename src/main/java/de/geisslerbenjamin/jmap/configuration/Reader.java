@@ -41,6 +41,7 @@ public class Reader {
     private static ImageInterface loadImage(Map config) {
         return new Image(
                 (String) config.get("path"),
+                Double.parseDouble(config.get("factor").toString()),
                 Integer.parseInt(config.get("width").toString()),
                 Integer.parseInt(config.get("height").toString())
         );

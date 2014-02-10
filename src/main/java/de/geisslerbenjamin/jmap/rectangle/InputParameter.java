@@ -1,5 +1,7 @@
 package de.geisslerbenjamin.jmap.rectangle;
 
+import java.util.ArrayList;
+
 /**
  * Description.
  *
@@ -12,5 +14,5 @@ public class InputParameter {
     public double height;
     public double rotation;
     public boolean valid;
-    public String message;
+    public ArrayList<String> message;
 }

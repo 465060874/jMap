@@ -1,4 +1,4 @@
-"title": "jMap"
+"title": "jkMap"
 "data": "Daten"
 "data.load": "Daten laden"
 "exit": "Programm beenden"
@@ -12,6 +12,32 @@
 "control.info": "Element-Informationen anzeigen"
 "info.title": "Element-Informationen"
 "info.id": "Element-ID: "
+
+"menu.config": "Einstellung"
+"menu.config.edit": "Ändern"
+
+"config.title": "Einstellungen"
+"config.error.message": "Die Konfigurations-Einstellung ist nicht korrekt!"
+"config.image.path": "Hintergrund-Bild"
+"config.image.select": "Bild auswählen"
+"config.image.fileChooser": "Bitte ein Bild-Datei auswählen"
+"config.image.types": "Alle Bilder"
+
+"config.dataSource.file": "Datenbank-Datei"
+"config.dataSource.select": "Datenbank auswählen"
+"config.dataSource.fileChooser": "Bitte ein Microsoft Access Datenbank auswählen"
+"config.dataSource.types": "Alle Microsoft Access Datenbank"
+"config.dataSource.table": "Tabellen-Name"
+"config.image.factor": "1 m entspricht wieviel Pixeln?"
+"config.image.width": "Breite des Bild-Dialoge (nicht des Bildes)"
+"config.image.height": "Höhe des Bild-Dialoge (nicht des Bildes)"
+
+"config.error.image": "Die angegebene Bild-Datei ist nicht vorhanden!"
+"config.error.database": "Die angegebene Datenbank-Datei ist nicht vorhanden!"
+"config.error.table": "Die angegebene Tabelle ist nicht in der Datenbank vorhanden!"
+"config.error.factor": "Es ist nicht angegeben, wieviel Pixel auf dem Bild 1 m entsprechen!"
+"config.error.width": "Die Breite des Bild-Dialogs ist nicht angegeben!"
+"config.error.height": "Die Höhe des Bild-Dialogs ist nicht angegeben!"
 
 "menu.element.new": "Neues Element erstellen"
 "menu.element.rectangle": "Rechteck erstellen"

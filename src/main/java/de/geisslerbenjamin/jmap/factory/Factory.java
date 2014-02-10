@@ -142,7 +142,7 @@ public class Factory implements FactoryInterface, ListenerInterface {
 
     @Override
     public DrawableDisplayConfigurationInterface getDrawableDisplayConfiguration() {
-        return DrawableDisplayConfiguration.get(1.0, false, false, true, this.getMediator());
+        return DrawableDisplayConfiguration.get(1.0, this.config.getImage().getFactorForImageSize(), false, false, true, this.getMediator());
     }
 
     @Override

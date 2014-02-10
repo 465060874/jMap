@@ -10,7 +10,7 @@ import de.geisslerbenjamin.jmap.rectangle.interfaces.RectangleConfigurationInter
 import javafx.stage.Stage;
 
 /**
- * Description.
+ * Display a dialog to edit the values of a rectangle.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT

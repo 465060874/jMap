@@ -12,6 +12,7 @@ import de.geisslerbenjamin.jmap.mediator.interfaces.*;
 public class DrawableDisplayConfiguration implements DrawableDisplayConfigurationInterface, ListenerInterface {
     private static DrawableDisplayConfigurationInterface self;
     private double zoom;
+    private double factor;
     private boolean move;
     private boolean edit;
     private boolean info;
@@ -25,8 +26,9 @@ public class DrawableDisplayConfiguration implements DrawableDisplayConfiguratio
      * @param info
      * @param mediator
      */
-    protected DrawableDisplayConfiguration(double zoom, boolean move, boolean edit, boolean info, MediatorInterface mediator) {
+    protected DrawableDisplayConfiguration(double zoom, double factor, boolean move, boolean edit, boolean info, MediatorInterface mediator) {
         this.zoom = zoom;
+        this.factor = factor;
         this.move = move;
         this.edit = edit;
         this.info = info;
@@ -37,6 +39,7 @@ public class DrawableDisplayConfiguration implements DrawableDisplayConfiguratio
                 .register("display.move", this, 1)
                 .register("display.info", this, 1)
                 .register("display.edit", this, 1)
+                .register("configuration.changed", this, 1)
         ;
     }
 
@@ -50,9 +53,9 @@ public class DrawableDisplayConfiguration implements DrawableDisplayConfiguratio
      * @param mediator
      * @return
      */
-    public static DrawableDisplayConfigurationInterface get(double zoom, boolean move, boolean edit, boolean info, MediatorInterface mediator) {
+    public static DrawableDisplayConfigurationInterface get(double zoom, double factor, boolean move, boolean edit, boolean info, MediatorInterface mediator) {
         if (self == null) {
-            self = new DrawableDisplayConfiguration(zoom, move, edit, info, mediator);
+            self = new DrawableDisplayConfiguration(zoom, factor, move, edit, info, mediator);
         }
 
         return self;
@@ -61,6 +64,11 @@ public class DrawableDisplayConfiguration implements DrawableDisplayConfiguratio
     @Override
     public double getZoom() {
         return this.zoom;
+    }
+
+    @Override
+    public double getFactor() {
+        return factor;
     }
 
     @Override
@@ -91,6 +99,11 @@ public class DrawableDisplayConfiguration implements DrawableDisplayConfiguratio
                 this.move = ((DisplayConfigurationEventInterface) event).isMove();
                 this.edit = ((DisplayConfigurationEventInterface) event).isEdit();
                 this.info = ((DisplayConfigurationEventInterface) event).isInfo();
+                return true;
+            case "configuration.changed":
+                if (event instanceof ConfigurationEventInterface) {
+                    this.factor = ((ConfigurationEventInterface) event).getConfiguration().getImage().getFactorForImageSize();
+                }
                 return true;
         }
 

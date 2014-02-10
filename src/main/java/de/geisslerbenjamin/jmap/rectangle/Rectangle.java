@@ -24,11 +24,11 @@ public class Rectangle extends AbstractDrawable {
 
     @Override
     protected void initCanvas() {
+        double width = ((RectangleConfigurationInterface) this.getConfig()).getWidth() * this.getDisplayConfig().getFactor() * this.getDisplayConfig().getZoom();
+        double height = ((RectangleConfigurationInterface) this.getConfig()).getHeight() * this.getDisplayConfig().getFactor() * this.getDisplayConfig().getZoom();
+
         if (this.canvas == null) {
-            this.canvas = new Canvas(
-                    ((RectangleConfigurationInterface) this.getConfig()).getWidth() * this.getDisplayConfig().getZoom(),
-                    ((RectangleConfigurationInterface) this.getConfig()).getHeight() * this.getDisplayConfig().getZoom()
-            );
+            this.canvas = new Canvas(width, height);
 
             // Rotation
             this.canvas.getTransforms().add(new Rotate(((RectangleConfigurationInterface) this.getConfig()).getRotation()));
@@ -37,14 +37,14 @@ public class Rectangle extends AbstractDrawable {
             this.canvas.setLayoutX(this.getConfig().getX());
             this.canvas.setLayoutY(this.getConfig().getY());
         } else {
-            this.canvas.setHeight(((RectangleConfigurationInterface) this.getConfig()).getHeight() * this.getDisplayConfig().getZoom());
-            this.canvas.setWidth(((RectangleConfigurationInterface) this.getConfig()).getWidth() * this.getDisplayConfig().getZoom());
+            this.canvas.setHeight(height);
+            this.canvas.setWidth(width);
         }
 
         final GraphicsContext graphicsContext = this.canvas.getGraphicsContext2D();
-        graphicsContext.clearRect(0, 0, canvas.getWidth() * this.getDisplayConfig().getZoom(), canvas.getHeight() * this.getDisplayConfig().getZoom());
+        graphicsContext.clearRect(0, 0, width, height);
         graphicsContext.setFill(this.getConfig().getColor());
-        graphicsContext.fillRect(0, 0, canvas.getWidth() * this.getDisplayConfig().getZoom(), canvas.getHeight() * this.getDisplayConfig().getZoom());
+        graphicsContext.fillRect(0, 0, width, height);
 
         // test if rotation has changed
         if (this.rotation != ((RectangleConfigurationInterface) this.getConfig()).getRotation()) {

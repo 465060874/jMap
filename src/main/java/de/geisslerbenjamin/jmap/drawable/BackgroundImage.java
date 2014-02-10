@@ -8,6 +8,7 @@ import de.geisslerbenjamin.jmap.mediator.interfaces.MediatorInterface;
 import de.geisslerbenjamin.jmap.mediator.interfaces.ZoomEventInterface;
 import javafx.scene.Group;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -60,7 +61,7 @@ public class BackgroundImage implements BackgroundImageInterface, ListenerInterf
 
         if (new File(this.config.getPath()).exists()) {
             // create image
-            javafx.scene.image.Image image = new javafx.scene.image.Image("file:" + this.config.getPath());
+            Image image = new Image("file:" + this.config.getPath());
             this.imageView = new ImageView(image);
             this.imageView.preserveRatioProperty().setValue(true);
             this.imageView.setFitWidth(this.config.getWidth());

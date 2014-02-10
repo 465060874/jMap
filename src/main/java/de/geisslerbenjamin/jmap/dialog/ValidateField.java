@@ -18,7 +18,7 @@ public class ValidateField {
     }
 
     public boolean isDouble(String input) {
-        return input.matches("^[1-9][0-9]*([.|,][0-9]+)?$");
+        return this.isInteger(input) || input.matches("^[0-9]+([.|,][0-9]+)?$");
     }
 
     public boolean isDoubleOrZero(String input) {

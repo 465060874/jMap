@@ -49,9 +49,9 @@ public class JMap extends Application {
 
             // load data
             Menu menuData = new Menu(factory.getTranslate().translate("data"));
-            MenuItem load = new MenuItem(factory.getTranslate().translate("data.load"));
-            load.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
-            load.setOnAction(new EventHandler<ActionEvent>() {
+            MenuItem menuDataLoad = new MenuItem(factory.getTranslate().translate("data.load"));
+            menuDataLoad.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
+            menuDataLoad.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent mouseEvent) {
@@ -59,14 +59,15 @@ public class JMap extends Application {
                     factory.getMediator().dispatch("configuration.changed");
                 }
             });
-            MenuItem exit = new MenuItem(factory.getTranslate().translate("exit"));
-            exit.setOnAction(new EventHandler<ActionEvent>() {
+            MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("exit"));
+            menuDataExit.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
+            menuDataExit.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent t) {
                     System.exit(0);
                 }
             });
 
-            menuData.getItems().addAll(load, new SeparatorMenuItem(), exit);
+            menuData.getItems().addAll(menuDataLoad, new SeparatorMenuItem(), menuDataExit);
             menuBar.getMenus().add(menuData);
 
             // Menu to create new objects
@@ -110,6 +111,7 @@ public class JMap extends Application {
                 }
             });
             MenuItem menuImageZoomReset = new MenuItem(factory.getTranslate().translate("zoom.reset"));
+            menuImageZoomReset.setAccelerator(new KeyCodeCombination(KeyCode.DIGIT0, KeyCombination.CONTROL_DOWN));
             menuImageZoomReset.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -123,6 +125,7 @@ public class JMap extends Application {
             // control menu
             Menu menuControl = new Menu(factory.getTranslate().translate("control"));
             MenuItem menuControlMove = new MenuItem(factory.getTranslate().translate("control.move"));
+            menuControlMove.setAccelerator(new KeyCodeCombination(KeyCode.M, KeyCombination.CONTROL_DOWN));
             menuControlMove.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -130,6 +133,7 @@ public class JMap extends Application {
                 }
             });
             MenuItem menuControlEdit = new MenuItem(factory.getTranslate().translate("control.edit"));
+            menuControlEdit.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN));
             menuControlEdit.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -137,6 +141,7 @@ public class JMap extends Application {
                 }
             });
             MenuItem menuControlInfo = new MenuItem(factory.getTranslate().translate("control.info"));
+            menuControlInfo.setAccelerator(new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN));
             menuControlInfo.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -149,6 +154,7 @@ public class JMap extends Application {
             // configuration menu
             Menu menuConfig = new Menu(factory.getTranslate().translate("menu.config"));
             MenuItem menuConfigEdit = new MenuItem(factory.getTranslate().translate("menu.config.edit"));
+            menuConfigEdit.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
             menuConfigEdit.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {

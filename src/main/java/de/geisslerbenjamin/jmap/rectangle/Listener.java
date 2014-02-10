@@ -8,7 +8,7 @@ import de.geisslerbenjamin.jmap.mediator.interfaces.ListenerInterface;
 import de.geisslerbenjamin.jmap.mediator.interfaces.MediatorInterface;
 
 /**
- * Description.
+ * Listener listing to the on-click-actions.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT

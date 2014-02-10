@@ -120,28 +120,28 @@ abstract public class AbstractDialog {
                     localInput.id = Integer.parseInt(id.getText());
                 } else {
                     localInput.valid = false;
-                    localInput.message = "error.rectangle.id";
+                    localInput.message.add("error.rectangle.id");
                 }
 
                 if (validation.isDouble(width.getText())) {
                     localInput.width = Double.parseDouble(width.getText().replace(",", "."));
                 } else {
                     localInput.valid = false;
-                    localInput.message = "error.rectangle.width";
+                    localInput.message.add("error.rectangle.width");
                 }
 
                 if (validation.isDouble(height.getText())) {
                     localInput.height = Double.parseDouble(height.getText().replace(",", "."));
                 } else {
                     localInput.valid = false;
-                    localInput.message = "error.rectangle.height";
+                    localInput.message.add("error.rectangle.height");
                 }
 
                 if (validation.isDoubleOrZero(rotation.getText())) {
                     localInput.rotation = Double.parseDouble(rotation.getText().replace(",", "."));
                 } else {
                     localInput.valid = false;
-                    localInput.message = "error.rectangle.rotation";
+                    localInput.message.add("error.rectangle.rotation");
                 }
 
                 return null;

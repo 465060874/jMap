@@ -77,7 +77,7 @@ public class Dialog implements DialogInterface {
      *
      * @return true if OK button is clicked, otherwise false
      */
-    public boolean displayDialog() {
+    private boolean displayDialog() {
         GridPane grid = new GridPane();
         grid.setVgap(10);
         grid.setHgap(10);
@@ -150,6 +150,30 @@ public class Dialog implements DialogInterface {
         grid.add(new Label(this.translate.translate("config.dataSource.table") + ":"), 0, 3);
         grid.add(table, 1, 3);
 
+        // the factor
+        final TextField factor = new TextField();
+        factor.setPromptText(this.translate.translate("config.image.factor"));
+        factor.setText(Double.toString(this.config.getImage().getFactor()));
+
+        grid.add(new Label(this.translate.translate("config.image.factor")), 0, 4);
+        grid.add(factor, 1, 4);
+
+        // the width
+        final TextField width = new TextField();
+        width.setPromptText(this.translate.translate("config.image.width"));
+        width.setText(Integer.toString(this.config.getImage().getWidth()));
+
+        grid.add(new Label(this.translate.translate("config.image.width") + ":"), 0, 5);
+        grid.add(width, 1, 5);
+
+        // the height
+        final TextField height = new TextField();
+        height.setPromptText(this.translate.translate("config.image.height"));
+        height.setText(Integer.toString(this.config.getImage().getHeight()));
+
+        grid.add(new Label(this.translate.translate("config.image.height") + ":"), 0, 6);
+        grid.add(height, 1, 6);
+
         Callback<Void, Void> myCallback = new Callback<Void, Void>() {
             @Override
             public Void call(Void param) {
@@ -171,9 +195,28 @@ public class Dialog implements DialogInterface {
                     isValid = false;
                 }
 
+                if (!validation.isDouble(factor.getText())) {
+                    errorMessages.add("config.error.factor");
+                    isValid = false;
+                }
+
+                if (!validation.isInteger(width.getText())) {
+                    errorMessages.add("config.error.width");
+                    isValid = false;
+                }
+
+                if (!validation.isInteger(height.getText())) {
+                    errorMessages.add("config.error.height");
+                    isValid = false;
+                }
+
                 if (isValid) {
                     // change the configuration values
-                    config.getImage().setPath(image.getText());
+                    config.getImage()
+                            .setPath(image.getText())
+                            .setFactor(Double.parseDouble(factor.getText().replace(",", ".")))
+                            .setWidth(Integer.parseInt(width.getText()))
+                            .setHeight(Integer.parseInt(height.getText()));
                     config.getDataSource()
                             .setFile(database.getText())
                             .setTable(table.getText());
