@@ -15,6 +15,14 @@ public class Image implements ImageInterface {
     private int height;
     private double factorForImageSize;
 
+    /**
+     * Constructor.
+     *
+     * @param path
+     * @param factor
+     * @param width
+     * @param height
+     */
     public Image(String path, double factor, int width, int height) {
         this.path = path;
         this.factor = factor;

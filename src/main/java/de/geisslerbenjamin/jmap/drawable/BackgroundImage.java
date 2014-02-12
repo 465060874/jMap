@@ -38,7 +38,10 @@ public class BackgroundImage implements BackgroundImageInterface, ListenerInterf
 
         this.mediator
                 .register("image.zoom.in", this)
-                .register("image.zoom.out", this);
+                .register("image.zoom.out", this)
+                .register("image.print.start", this)
+                .register("image.print.end", this)
+        ;
     }
 
     @Override
@@ -47,6 +50,15 @@ public class BackgroundImage implements BackgroundImageInterface, ListenerInterf
             case "image.zoom.in":
             case "image.zoom.out":
                 this.zoom = ((ZoomEventInterface) event).getZoomFactor();
+                this.imageView.setFitWidth(this.zoom * this.config.getWidth());
+                this.imageView.setFitHeight(this.zoom * this.config.getHeight());
+                return true;
+            case "image.print.start":
+                Image image = new Image("file:" + this.config.getPath());
+                this.imageView.setFitWidth(image.getWidth());
+                this.imageView.setFitHeight(image.getHeight());
+                return true;
+            case "image.print.end":
                 this.imageView.setFitWidth(this.zoom * this.config.getWidth());
                 this.imageView.setFitHeight(this.zoom * this.config.getHeight());
                 return true;

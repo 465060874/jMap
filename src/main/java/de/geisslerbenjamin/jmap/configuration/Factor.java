@@ -4,7 +4,8 @@ import de.geisslerbenjamin.jmap.configuration.interfaces.FactorInterface;
 import javafx.scene.image.Image;
 
 /**
- * Description.
+ * Calculate the factor to transfer metric values into pixel based on the image-box size and the given
+ * meter-to-pixel-factor of the background image.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT

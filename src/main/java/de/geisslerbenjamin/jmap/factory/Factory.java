@@ -15,12 +15,10 @@ import de.geisslerbenjamin.jmap.data.interfaces.RowCreatorInterface;
 import de.geisslerbenjamin.jmap.data.interfaces.TableDataGatewayInterface;
 import de.geisslerbenjamin.jmap.dialog.Information;
 import de.geisslerbenjamin.jmap.dialog.interfaces.CreateDialogInterface;
-import de.geisslerbenjamin.jmap.drawable.BackgroundImage;
-import de.geisslerbenjamin.jmap.drawable.Display;
-import de.geisslerbenjamin.jmap.drawable.DrawableConfiguration;
-import de.geisslerbenjamin.jmap.drawable.DrawableDisplayConfiguration;
+import de.geisslerbenjamin.jmap.drawable.*;
 import de.geisslerbenjamin.jmap.drawable.interfaces.DrawableConfigurationInterface;
 import de.geisslerbenjamin.jmap.drawable.interfaces.DrawableDisplayConfigurationInterface;
+import de.geisslerbenjamin.jmap.drawable.interfaces.SaveInterface;
 import de.geisslerbenjamin.jmap.factory.interfaces.ElementFactoryInterface;
 import de.geisslerbenjamin.jmap.factory.interfaces.FactoryInterface;
 import de.geisslerbenjamin.jmap.mediator.Mediator;
@@ -142,7 +140,14 @@ public class Factory implements FactoryInterface, ListenerInterface {
 
     @Override
     public DrawableDisplayConfigurationInterface getDrawableDisplayConfiguration() {
-        return DrawableDisplayConfiguration.get(1.0, this.config.getImage().getFactorForImageSize(), false, false, true, this.getMediator());
+        return DrawableDisplayConfiguration.get(
+                1.0,
+                this.config.getImage().getFactorForImageSize(),
+                false,
+                false,
+                true,
+                this.getMediator()
+        );
     }
 
     @Override
@@ -172,6 +177,11 @@ public class Factory implements FactoryInterface, ListenerInterface {
     @Override
     public Set<String> getElementNames() {
         return this.factories.keySet();
+    }
+
+    @Override
+    public SaveInterface getSaveDialog() {
+        return new Save(this.stage, this.getImagePane(), this.config.getImage(), this.mediator, this.translate.translate("menu.data.save.dialog"));
     }
 
     @Override

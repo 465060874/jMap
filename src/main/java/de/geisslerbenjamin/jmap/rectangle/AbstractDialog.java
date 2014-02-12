@@ -80,14 +80,6 @@ abstract public class AbstractDialog {
         grid.setHgap(10);
         grid.setPadding(new Insets(0, 10, 0, 10));
 
-        // id
-        final TextField id = new TextField();
-        id.setPromptText(translation.translate("element.id"));
-        id.setText(Integer.toString(this.input.id));
-        id.setEditable(false);
-        grid.add(new Label(translation.translate("element.id") + ":"), 0, 0);
-        grid.add(id, 1, 0);
-
         // width
         final TextField width = new TextField();
         width.setPromptText(translation.translate("element.rectangle.width"));
@@ -116,13 +108,6 @@ abstract public class AbstractDialog {
             public Void call(Void param) {
                 // integer validieren
                 ValidateField validation = new ValidateField();
-                if (validation.isIntegerOrZero(id.getText())) {
-                    localInput.id = Integer.parseInt(id.getText());
-                } else {
-                    localInput.valid = false;
-                    localInput.message.add("error.rectangle.id");
-                }
-
                 if (validation.isDouble(width.getText())) {
                     localInput.width = Double.parseDouble(width.getText().replace(",", "."));
                 } else {

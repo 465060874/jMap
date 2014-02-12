@@ -16,6 +16,13 @@ public class Configuration implements ConfigurationInterface {
     private DataSourceInterface dataSource;
     private LanguageInterface language;
 
+    /**
+     * Constructor.
+     *
+     * @param image
+     * @param dataSource
+     * @param language
+     */
     public Configuration(ImageInterface image, DataSourceInterface dataSource, LanguageInterface language) {
         this.image = image;
         this.dataSource = dataSource;

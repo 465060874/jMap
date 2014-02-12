@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 
 /**
- * Initial stage.
+ * Initial and only stage.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
@@ -48,8 +48,8 @@ public class JMap extends Application {
             MenuBar menuBar = new MenuBar();
 
             // load data
-            Menu menuData = new Menu(factory.getTranslate().translate("data"));
-            MenuItem menuDataLoad = new MenuItem(factory.getTranslate().translate("data.load"));
+            Menu menuData = new Menu(factory.getTranslate().translate("menu.data"));
+            MenuItem menuDataLoad = new MenuItem(factory.getTranslate().translate("menu.data.load"));
             menuDataLoad.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
             menuDataLoad.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -59,7 +59,19 @@ public class JMap extends Application {
                     factory.getMediator().dispatch("configuration.changed");
                 }
             });
-            MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("exit"));
+
+            // save image
+            MenuItem menuDataSave = new MenuItem(factory.getTranslate().translate("menu.data.save"));
+            menuDataSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+            menuDataSave.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent mouseEvent) {
+                    factory.getSaveDialog().dialog();
+                }
+            });
+
+            MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("menu.exit"));
             menuDataExit.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
             menuDataExit.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent t) {
@@ -67,7 +79,7 @@ public class JMap extends Application {
                 }
             });
 
-            menuData.getItems().addAll(menuDataLoad, new SeparatorMenuItem(), menuDataExit);
+            menuData.getItems().addAll(menuDataLoad, menuDataSave, new SeparatorMenuItem(), menuDataExit);
             menuBar.getMenus().add(menuData);
 
             // Menu to create new objects
@@ -85,8 +97,8 @@ public class JMap extends Application {
             menuBar.getMenus().add(menuElement);
 
             // Menu to zoom in and out
-            Menu menuImage = new Menu(factory.getTranslate().translate("image"));
-            MenuItem menuImageZoomIn = new MenuItem(factory.getTranslate().translate("zoom.in"));
+            Menu menuImage = new Menu(factory.getTranslate().translate("menu.zoom"));
+            MenuItem menuImageZoomIn = new MenuItem(factory.getTranslate().translate("menu.zoom.in"));
             menuImageZoomIn.setAccelerator(new KeyCodeCombination(KeyCode.PLUS, KeyCombination.CONTROL_DOWN));
             menuImageZoomIn.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -97,7 +109,7 @@ public class JMap extends Application {
                     );
                 }
             });
-            MenuItem menuImageZoomOut = new MenuItem(factory.getTranslate().translate("zoom.out"));
+            MenuItem menuImageZoomOut = new MenuItem(factory.getTranslate().translate("menu.zoom.out"));
             menuImageZoomOut.setAccelerator(new KeyCodeCombination(KeyCode.MINUS, KeyCombination.CONTROL_DOWN));
             menuImageZoomOut.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -110,7 +122,7 @@ public class JMap extends Application {
                     }
                 }
             });
-            MenuItem menuImageZoomReset = new MenuItem(factory.getTranslate().translate("zoom.reset"));
+            MenuItem menuImageZoomReset = new MenuItem(factory.getTranslate().translate("menu.zoom.reset"));
             menuImageZoomReset.setAccelerator(new KeyCodeCombination(KeyCode.DIGIT0, KeyCombination.CONTROL_DOWN));
             menuImageZoomReset.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -123,8 +135,8 @@ public class JMap extends Application {
             menuBar.getMenus().add(menuImage);
 
             // control menu
-            Menu menuControl = new Menu(factory.getTranslate().translate("control"));
-            MenuItem menuControlMove = new MenuItem(factory.getTranslate().translate("control.move"));
+            Menu menuControl = new Menu(factory.getTranslate().translate("menu.control"));
+            MenuItem menuControlMove = new MenuItem(factory.getTranslate().translate("menu.control.move"));
             menuControlMove.setAccelerator(new KeyCodeCombination(KeyCode.M, KeyCombination.CONTROL_DOWN));
             menuControlMove.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -132,7 +144,7 @@ public class JMap extends Application {
                     factory.getMediator().dispatch("display.move", new DisplayConfigurationEvent(true, false, false));
                 }
             });
-            MenuItem menuControlEdit = new MenuItem(factory.getTranslate().translate("control.edit"));
+            MenuItem menuControlEdit = new MenuItem(factory.getTranslate().translate("menu.control.edit"));
             menuControlEdit.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN));
             menuControlEdit.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -140,7 +152,7 @@ public class JMap extends Application {
                     factory.getMediator().dispatch("display.edit", new DisplayConfigurationEvent(false, true, false));
                 }
             });
-            MenuItem menuControlInfo = new MenuItem(factory.getTranslate().translate("control.info"));
+            MenuItem menuControlInfo = new MenuItem(factory.getTranslate().translate("menu.control.info"));
             menuControlInfo.setAccelerator(new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN));
             menuControlInfo.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -168,7 +180,6 @@ public class JMap extends Application {
             Scene scene = new Scene(main);
             main.getChildren().addAll(menuBar);
             main.getChildren().add(root);
-
 
             // maximize window
             Screen screen = Screen.getPrimary();

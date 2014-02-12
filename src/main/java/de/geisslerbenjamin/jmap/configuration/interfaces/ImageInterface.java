@@ -44,11 +44,33 @@ public interface ImageInterface {
      */
     public ImageInterface setFactor(double factor);
 
+    /**
+     * Get the width of the image box.
+     *
+     * @return
+     */
     public int getWidth();
 
+    /**
+     * Set the width of the image box.
+     *
+     * @param width
+     * @return
+     */
     public ImageInterface setWidth(int width);
 
+    /**
+     * Get the height of the image box.
+     *
+     * @return
+     */
     public int getHeight();
 
+    /**
+     * Set the height of the image box.
+     *
+     * @param height
+     * @return
+     */
     public ImageInterface setHeight(int height);
 }
