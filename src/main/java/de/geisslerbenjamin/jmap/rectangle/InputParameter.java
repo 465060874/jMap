@@ -3,7 +3,7 @@ package de.geisslerbenjamin.jmap.rectangle;
 import java.util.ArrayList;
 
 /**
- * Description.
+ * All parameters of an rectangle.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
@@ -15,4 +15,11 @@ public class InputParameter {
     public double rotation;
     public boolean valid;
     public ArrayList<String> message;
+
+    /**
+     * Constructor.
+     */
+    public InputParameter() {
+        this.message = new ArrayList<>();
+    }
 }

@@ -106,7 +106,9 @@ abstract public class AbstractDialog {
         Callback<Void, Void> myCallback = new Callback<Void, Void>() {
             @Override
             public Void call(Void param) {
-                // integer validieren
+                localInput.id = input.id;
+
+                // validate user input
                 ValidateField validation = new ValidateField();
                 if (validation.isDouble(width.getText())) {
                     localInput.width = Double.parseDouble(width.getText().replace(",", "."));

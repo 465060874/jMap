@@ -71,7 +71,7 @@ public class JMap extends Application {
                 }
             });
 
-            MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("menu.exit"));
+            MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("menu.data.exit"));
             menuDataExit.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
             menuDataExit.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent t) {

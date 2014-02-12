@@ -1,6 +1,9 @@
 package de.geisslerbenjamin.jmap.data;
 
-import com.healthmarketscience.jackcess.*;
+import com.healthmarketscience.jackcess.Database;
+import com.healthmarketscience.jackcess.DatabaseBuilder;
+import com.healthmarketscience.jackcess.Row;
+import com.healthmarketscience.jackcess.Table;
 import de.geisslerbenjamin.jmap.data.interfaces.AccessRowInterface;
 import de.geisslerbenjamin.jmap.data.interfaces.RowParserInterface;
 import de.geisslerbenjamin.jmap.data.interfaces.TableDataGatewayInterface;
@@ -8,7 +11,6 @@ import de.geisslerbenjamin.jmap.drawable.interfaces.DrawableConfigurationInterfa
 import de.geisslerbenjamin.jmap.drawable.interfaces.DrawableInterface;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,10 +59,8 @@ public class TableDataGateway implements TableDataGatewayInterface {
             }
 
             return result;
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (Exception error) {
-            error.printStackTrace();
+            System.err.println(error.getMessage());
         }
 
         return null;
@@ -72,36 +72,16 @@ public class TableDataGateway implements TableDataGatewayInterface {
             Database db = DatabaseBuilder.open(new File(this.file));
             Table table = db.getTable(this.read);
 
+            // create the row and update the order
             AccessRowInterface row = this.createRow(type, drawable);
-            // the order of the columns is a little bit crazy, why ever :-/
-            // TODO: Automatic transfer
-            /*
-            System.out.print(table.getColumns());
-            Object[] test = new Object[10];
-            test[0] = 1;
-            test[1] = 3;
-
-            Object blub = table.addRow(test);
-            */
-
-            Object result = table.addRow(
-                    Column.AUTO_NUMBER,
-                    row.getX(),
-                    row.getY(),
-                    row.getType(),
-                    row.getColor(),
-                    true,
-                    row.getWidth(),
-                    row.getHeight(),
-                    row.getRotation(),
-                    ""
-            );
+            Object result = table.addRow(new Transform().transferIntoAccessRow(table, row));
 
             // add auto create id
             row.setId(Integer.parseInt(((Object[]) result)[0].toString()));
 
             return this.readRow(row);
         } catch (Exception error) {
+            System.err.println(error.getMessage());
             error.printStackTrace();
         }
 
@@ -121,7 +101,7 @@ public class TableDataGateway implements TableDataGatewayInterface {
                 }
             }
         } catch (Exception error) {
-            error.printStackTrace();
+            System.err.println(error.getMessage());
         }
 
         return false;

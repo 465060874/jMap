@@ -47,16 +47,28 @@ abstract public class AbstractDrawable implements DrawableInterface, ListenerInt
     }
 
     /**
+     * Access the configuration of the specific drawable.
+     *
      * @return
      */
     protected DrawableConfigurationInterface getConfig() {
         return config;
     }
 
+    /**
+     * Access the configuration of all drawables.
+     *
+     * @return
+     */
     protected DrawableDisplayConfigurationInterface getDisplayConfig() {
         return displayConfig;
     }
 
+    /**
+     * Access the mediator.
+     *
+     * @return
+     */
     protected MediatorInterface getMediator() {
         return mediator;
     }
