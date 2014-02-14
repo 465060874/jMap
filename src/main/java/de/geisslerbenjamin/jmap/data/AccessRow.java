@@ -16,6 +16,7 @@ public class AccessRow implements AccessRowInterface {
     private double y;
     private String type;
     private String color;
+    private double transparency;
     private double width;
     private double height;
     private double rotation;
@@ -74,7 +75,35 @@ public class AccessRow implements AccessRowInterface {
             this.color = "red";
         } else if (color.equals(Color.GREEN)) {
             this.color = "green";
+        } else if (color.equals(Color.BLUE)) {
+            this.color = "blue";
+        } else if (color.equals(Color.YELLOW)) {
+            this.color = "yellow";
+        } else if (color.equals(Color.ORANGE)) {
+            this.color = "orange";
+        } else if (color.equals(Color.VIOLET)) {
+            this.color = "violet";
+        } else if (color.equals(Color.PINK)) {
+            this.color = "pink";
+        } else if (color.equals(Color.TURQUOISE)) {
+            this.color = "turquoise";
+        } else if (color.equals(Color.BLACK)) {
+            this.color = "black";
+        } else if (color.equals(Color.WHITE)) {
+            this.color = "white";
         }
+
+        return this;
+    }
+
+    @Override
+    public double getTransparency() {
+        return transparency;
+    }
+
+    @Override
+    public AccessRowInterface setTransparency(double transparency) {
+        this.transparency = transparency;
         return this;
     }
 

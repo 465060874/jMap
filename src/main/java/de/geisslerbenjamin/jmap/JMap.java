@@ -98,8 +98,9 @@ public class JMap extends Application {
 
             // Menu to zoom in and out
             Menu menuImage = new Menu(factory.getTranslate().translate("menu.zoom"));
+
             MenuItem menuImageZoomIn = new MenuItem(factory.getTranslate().translate("menu.zoom.in"));
-            menuImageZoomIn.setAccelerator(new KeyCodeCombination(KeyCode.PLUS, KeyCombination.CONTROL_DOWN));
+            menuImageZoomIn.setAccelerator(new KeyCodeCombination(KeyCode.UP, KeyCombination.CONTROL_DOWN));
             menuImageZoomIn.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -110,7 +111,7 @@ public class JMap extends Application {
                 }
             });
             MenuItem menuImageZoomOut = new MenuItem(factory.getTranslate().translate("menu.zoom.out"));
-            menuImageZoomOut.setAccelerator(new KeyCodeCombination(KeyCode.MINUS, KeyCombination.CONTROL_DOWN));
+            menuImageZoomOut.setAccelerator(new KeyCodeCombination(KeyCode.DOWN, KeyCombination.CONTROL_DOWN));
             menuImageZoomOut.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {

@@ -28,12 +28,11 @@ public class RowParser extends ParseDrawable {
                         Integer.parseInt(row.get("id").toString()),
                         Double.parseDouble(row.get("x").toString()),
                         Double.parseDouble(row.get("y").toString()),
-                        this.getColor(row.get("color").toString()),
+                        this.getColor(row.get("color").toString(), Double.parseDouble(row.get("transparency").toString())),
                         row.get("information").toString(),
                         Double.parseDouble(row.get("width").toString()),
                         Double.parseDouble(row.get("height").toString()),
                         Double.parseDouble(row.get("rotation").toString())
-
                 ),
                 this.getDisplayConfig(),
                 this.getMediator()
@@ -47,7 +46,7 @@ public class RowParser extends ParseDrawable {
                         row.getId(),
                         row.getX(),
                         row.getY(),
-                        this.getColor(row.getColor()),
+                        this.getColor(row.getColor(), row.getTransparency()),
                         "",
                         row.getWidth(),
                         row.getHeight(),
@@ -64,6 +63,7 @@ public class RowParser extends ParseDrawable {
                 .setX(config.getX())
                 .setY(config.getY())
                 .setColor(config.getColor())
+                .setTransparency(1.0)
                 .setType("rectangle")
                 .setWidth(((RectangleConfigurationInterface) config).getWidth())
                 .setHeight(((RectangleConfigurationInterface) config).getHeight())

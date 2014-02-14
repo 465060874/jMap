@@ -37,6 +37,9 @@ public class Transform implements TransformInterface {
                 case "color":
                     accessRow[position++] = row.getColor();
                     break;
+                case "transparency":
+                    accessRow[position++] = row.getTransparency();
+                    break;
                 case "width":
                     accessRow[position++] = row.getWidth();
                     break;

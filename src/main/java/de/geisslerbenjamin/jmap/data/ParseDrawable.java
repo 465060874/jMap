@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 /**
- * Description.
+ * Basic implementation of a row parser, which transfers the data values into drawable configuration values.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
@@ -21,10 +21,20 @@ abstract public class ParseDrawable implements RowParserInterface {
         this.mediator = mediator;
     }
 
+    /**
+     * Access the overall drawable configuration.
+     *
+     * @return
+     */
     protected DrawableDisplayConfigurationInterface getDisplayConfig() {
         return displayConfig;
     }
 
+    /**
+     * Access the mediator.
+     *
+     * @return
+     */
     protected MediatorInterface getMediator() {
         return mediator;
     }
@@ -33,16 +43,31 @@ abstract public class ParseDrawable implements RowParserInterface {
      * Transfers the color name into a color object.
      *
      * @param name
+     * @param transparency
      * @return
      */
-    protected Paint getColor(String name) {
+    protected Paint getColor(String name, double transparency) {
         switch (name) {
             case "red":
-                return Color.RED;
+                return Color.web("#FF0000", transparency);
             case "green":
-                return Color.GREEN;
+                return Color.web("#008000", transparency);
+            case "blue":
+                return Color.web("#0000FF", transparency);
+            case "yellow":
+                return Color.web("#FFFF00", transparency);
+            case "orange":
+                return Color.web("#FFA500", transparency);
+            case "violet":
+                return Color.web("#EE82EE", transparency);
+            case "pink":
+                return Color.web("#FFC0CB", transparency);
+            case "turquoise":
+                return Color.web("#40E0D0", transparency);
+            case "white":
+                return Color.web("#FFFFFF", transparency);
             default:
-                return Color.BLACK;
+                return Color.web("#000000", transparency);
         }
     }
 }

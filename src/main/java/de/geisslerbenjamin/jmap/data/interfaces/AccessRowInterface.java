@@ -29,6 +29,10 @@ public interface AccessRowInterface {
 
     public AccessRowInterface setColor(Paint color);
 
+    public double getTransparency();
+
+    public AccessRowInterface setTransparency(double transparency);
+
     public double getWidth();
 
     public AccessRowInterface setWidth(double width);
