@@ -13,6 +13,10 @@ public interface AccessRowInterface {
 
     public void setId(int id);
 
+    public String getType();
+
+    public AccessRowInterface setType(String type);
+
     public double getX();
 
     public AccessRowInterface setX(double x);
@@ -21,9 +25,9 @@ public interface AccessRowInterface {
 
     public AccessRowInterface setY(double y);
 
-    public String getType();
+    public double getRotation();
 
-    public AccessRowInterface setType(String type);
+    public AccessRowInterface setRotation(double rotation);
 
     public String getColor();
 
@@ -41,7 +45,8 @@ public interface AccessRowInterface {
 
     public AccessRowInterface setHeight(double height);
 
-    public double getRotation();
+    public double getDiameter();
 
-    public AccessRowInterface setRotation(double rotation);
+    public AccessRowInterface setDiameter(double diameter);
+
 }

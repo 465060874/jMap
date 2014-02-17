@@ -1,19 +1,18 @@
-package de.geisslerbenjamin.jkmap.rectangle;
+package de.geisslerbenjamin.jkmap.circle;
 
 import de.geisslerbenjamin.jkmap.dialog.interfaces.InputParameterInterface;
 
 import java.util.ArrayList;
 
 /**
- * All parameters of an rectangle.
+ * Parameters of a circle.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
  */
 public class InputParameter implements InputParameterInterface {
     public int id;
-    public double width;
-    public double height;
+    public double diameter;
     public double rotation;
     public boolean valid;
     public ArrayList<String> message;
@@ -24,7 +23,6 @@ public class InputParameter implements InputParameterInterface {
     public InputParameter() {
         this.message = new ArrayList<>();
     }
-
 
     @Override
     public boolean isValid() {

@@ -26,7 +26,7 @@ public class Configuration extends DrawableConfiguration implements RectangleCon
      * @param height
      * @param rotation
      */
-    public Configuration(int id, double x, double y, Paint color, String information, double width, double height, double rotation) {
+    public Configuration(int id, double x, double y, double rotation, Paint color, String information, double width, double height) {
         super(id, x, y, rotation, color, information);
 
         this.width = width;

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 /**
- * Class representing a row in the Access database.
+ * Class representing a row in the Access database with all possible fields.
  *
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
@@ -20,6 +20,7 @@ public class AccessRow implements AccessRowInterface {
     private double width;
     private double height;
     private double rotation;
+    private double diameter;
 
     @Override
     public int getId() {
@@ -137,6 +138,17 @@ public class AccessRow implements AccessRowInterface {
     @Override
     public AccessRowInterface setRotation(double rotation) {
         this.rotation = rotation;
+        return this;
+    }
+
+    @Override
+    public double getDiameter() {
+        return this.diameter;
+    }
+
+    @Override
+    public AccessRowInterface setDiameter(double diameter) {
+        this.diameter = diameter;
         return this;
     }
 }

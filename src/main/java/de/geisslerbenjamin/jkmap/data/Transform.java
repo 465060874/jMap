@@ -55,6 +55,9 @@ public class Transform implements TransformInterface {
                 case "visible":
                     accessRow[position++] = true;
                     break;
+                case "diameter":
+                    accessRow[position++] = row.getDiameter();
+                    break;
                 default:
                     switch (column.getType().toString()) {
                         case "BINARY":

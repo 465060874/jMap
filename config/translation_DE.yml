@@ -42,17 +42,25 @@
 "config.error.width": "Die Breite des Bild-Dialogs ist nicht angegeben!"
 "config.error.height": "Die Höhe des Bild-Dialogs ist nicht angegeben!"
 
+"element.id": "ID"
+"dialog.error" : "Fehler!"
+
 "menu.element.rectangle": "Rechteck erstellen"
 "element.rectangle.create": "Neues Rechteck erstellen"
 "element.rectangle.edit": "Bestehendes Rechteck bearbeiten"
-
-"element.id": "ID"
 "element.rectangle.width": "Breite"
 "element.rectangle.height": "Tiefe"
 "element.rectangle.rotation": "Drehnung"
-"dialog.error" : "Fehler!"
-
 "error.rectangle.id" : "Die ID muss eine ganze Zahl sein"
 "error.rectangle.width": "Die Breite muss eine Komma-Zahl sein"
 "error.rectangle.height": "Die Tiefe muss eine Komma-Zahl sein"
 "error.rectangle.rotation": "Die Rotation muss eine Komma-Zahl zwischen 0 und 360 sein"
+
+"menu.element.circle": "Kreis erstellen"
+"element.circle.create": "Neuen Kreis erstellen"
+"element.circle.edit": "Bestehenden Kreis bearbeiten"
+"element.circle.diameter": "Durchmesser"
+"element.circle.rotation": "Drehnung"
+"error.circle.id" : "Die ID muss eine ganze Zahl sein"
+"error.circle.diameter": "Der Durchmesser muss eine Komma-Zahl sein"
+"error.circle.rotation": "Die Rotation muss eine Komma-Zahl zwischen 0 und 360 sein"

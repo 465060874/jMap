@@ -1,6 +1,7 @@
 package de.geisslerbenjamin.jkmap.rectangle;
 
 import de.geisslerbenjamin.jkmap.configuration.interfaces.TranslationInterface;
+import de.geisslerbenjamin.jkmap.dialog.AbstractDialog;
 import de.geisslerbenjamin.jkmap.dialog.ValidateField;
 import javafx.geometry.Insets;
 import javafx.scene.control.Dialogs;
@@ -16,56 +17,15 @@ import javafx.util.Callback;
  * @author Benjamin Geißler <benjamin.geissler@gmail.com>
  * @licence MIT
  */
-abstract public class AbstractDialog {
-    private Stage stage;
-    private TranslationInterface translation;
-    private InputParameter input;
-
+abstract public class AbstractRectangleDialog extends AbstractDialog {
     /**
      * Constructor.
      *
      * @param stage
      * @param translation
      */
-    public AbstractDialog(Stage stage, TranslationInterface translation) {
-        this.stage = stage;
-        this.translation = translation;
-    }
-
-    /**
-     * Process the input data further.
-     *
-     * @param input
-     */
-    protected abstract void handleInput(InputParameter input);
-
-    /**
-     * Displays the input dialog until a fields contain valid data or the process is canceled.
-     *
-     * @param inputData
-     * @param type
-     */
-    protected void display(InputParameter inputData, String type) {
-        boolean showDialog = true;
-        this.input = inputData;
-        while (showDialog) {
-            if (this.displayDialog(type)) {
-                if (this.input.valid) {
-                    this.handleInput(this.input);
-
-                    showDialog = false;
-                } else {
-                    Dialogs.showErrorDialog(
-                            this.stage,
-                            this.translation.translate(this.input.message),
-                            this.translation.translate("dialog.error"),
-                            this.translation.translate("dialog.error")
-                    );
-                }
-            } else {
-                showDialog = false;
-            }
-        }
+    public AbstractRectangleDialog(Stage stage, TranslationInterface translation) {
+        super(stage, translation);
     }
 
     /**
@@ -74,7 +34,7 @@ abstract public class AbstractDialog {
      * @param type
      * @return
      */
-    private boolean displayDialog(String type) {
+    protected boolean displayDialog(String type) {
         GridPane grid = new GridPane();
         grid.setVgap(10);
         grid.setHgap(10);
@@ -82,23 +42,23 @@ abstract public class AbstractDialog {
 
         // width
         final TextField width = new TextField();
-        width.setPromptText(translation.translate("element.rectangle.width"));
-        width.setText(Double.toString(this.input.width));
-        grid.add(new Label(translation.translate("element.rectangle.width") + ":"), 0, 1);
+        width.setPromptText(this.getTranslation().translate("element.rectangle.width"));
+        width.setText(Double.toString(((InputParameter) this.input).width));
+        grid.add(new Label(this.getTranslation().translate("element.rectangle.width") + ":"), 0, 1);
         grid.add(width, 1, 1);
 
         // height
         final TextField height = new TextField();
-        height.setPromptText(translation.translate("element.rectangle.height"));
-        height.setText(Double.toString(this.input.height));
-        grid.add(new Label(translation.translate("element.rectangle.height") + ":"), 0, 2);
+        height.setPromptText(this.getTranslation().translate("element.rectangle.height"));
+        height.setText(Double.toString(((InputParameter) this.input).height));
+        grid.add(new Label(this.getTranslation().translate("element.rectangle.height") + ":"), 0, 2);
         grid.add(height, 1, 2);
 
         // rotation
         final TextField rotation = new TextField();
-        rotation.setPromptText(translation.translate("element.rectangle.rotation"));
-        rotation.setText(Double.toString(this.input.rotation));
-        grid.add(new Label(translation.translate("element.rectangle.rotation") + ":"), 0, 3);
+        rotation.setPromptText(this.getTranslation().translate("element.rectangle.rotation"));
+        rotation.setText(Double.toString(((InputParameter) this.input).rotation));
+        grid.add(new Label(this.getTranslation().translate("element.rectangle.rotation") + ":"), 0, 3);
         grid.add(rotation, 1, 3);
 
         final InputParameter localInput = new InputParameter();
@@ -106,7 +66,7 @@ abstract public class AbstractDialog {
         Callback<Void, Void> myCallback = new Callback<Void, Void>() {
             @Override
             public Void call(Void param) {
-                localInput.id = input.id;
+                localInput.id = ((InputParameter) input).id;
 
                 // validate user input
                 ValidateField validation = new ValidateField();
@@ -135,9 +95,9 @@ abstract public class AbstractDialog {
             }
         };
 
-        String title = translation.translate("element.rectangle." + type);
+        String title = this.getTranslation().translate("element.rectangle." + type);
         Dialogs.DialogResponse response = Dialogs.showCustomDialog(
-                stage,
+                this.getStage(),
                 grid,
                 title,
                 title,

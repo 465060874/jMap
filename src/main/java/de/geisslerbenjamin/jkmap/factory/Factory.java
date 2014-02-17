@@ -54,6 +54,14 @@ public class Factory implements FactoryInterface, ListenerInterface {
     private DrawableConfigurationInterface drawableStandardConfig;
 
 
+    /**
+     * Init the main factory and all necessary parameters.
+     *
+     * @param stage
+     * @param root
+     * @param path
+     * @throws Exception
+     */
     public Factory(Stage stage, Pane root, String path) throws Exception {
         this.configPath = path + "config.yml";
         this.stage = stage;

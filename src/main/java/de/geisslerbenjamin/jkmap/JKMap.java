@@ -42,7 +42,10 @@ public class JKMap extends Application {
             factory = new Factory(primaryStage, root, new File(".").getCanonicalPath() + "/config/");
             factory
                     // add rectangle support
-                    .addElementFactory(new de.geisslerbenjamin.jkmap.rectangle.Factory());
+                    .addElementFactory(new de.geisslerbenjamin.jkmap.rectangle.Factory())
+                            // add circle support
+                    .addElementFactory(new de.geisslerbenjamin.jkmap.circle.Factory())
+            ;
 
             // create navigation menu
             MenuBar menuBar = new MenuBar();
