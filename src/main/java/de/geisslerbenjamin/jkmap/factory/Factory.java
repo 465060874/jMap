@@ -8,6 +8,7 @@ import de.geisslerbenjamin.jkmap.configuration.interfaces.ConfigurationInterface
 import de.geisslerbenjamin.jkmap.configuration.interfaces.DialogInterface;
 import de.geisslerbenjamin.jkmap.configuration.interfaces.TranslationInterface;
 import de.geisslerbenjamin.jkmap.data.DataContainer;
+import de.geisslerbenjamin.jkmap.data.Open;
 import de.geisslerbenjamin.jkmap.data.RowCreator;
 import de.geisslerbenjamin.jkmap.data.TableDataGateway;
 import de.geisslerbenjamin.jkmap.data.interfaces.DataContainerInterface;
@@ -52,7 +53,6 @@ public class Factory implements FactoryInterface, ListenerInterface {
     private DataContainerInterface dataContainer;
     private Map<String, ElementFactoryInterface> factories;
     private DrawableConfigurationInterface drawableStandardConfig;
-
 
     /**
      * Init the main factory and all necessary parameters.
@@ -191,6 +191,12 @@ public class Factory implements FactoryInterface, ListenerInterface {
     public SaveInterface getSaveDialog() {
         return new Save(this.stage, this.getImagePane(), this.config.getImage(), this.mediator, this.translate.translate("menu.data.save.dialog"));
     }
+
+    @Override
+    public void openFile() {
+        new Open().open(this.config.getDataSource().getFile());
+    }
+
 
     @Override
     public boolean exec(String name, EventInterface event) {

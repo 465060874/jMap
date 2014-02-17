@@ -1,4 +1,4 @@
-package de.geisslerbenjamin.jkmap.circle;
+package de.geisslerbenjamin.jkmap.semicircle;
 
 import de.geisslerbenjamin.jkmap.data.interfaces.TableDataGatewayInterface;
 import de.geisslerbenjamin.jkmap.dialog.interfaces.EditDialogInterface;
@@ -18,6 +18,13 @@ public class Listener implements ListenerInterface {
     private EditDialogInterface dialog;
     private TableDataGatewayInterface gateway;
 
+    /**
+     * Constructor.
+     *
+     * @param mediator
+     * @param dialog
+     * @param gateway
+     */
     public Listener(MediatorInterface mediator, EditDialogInterface dialog, TableDataGatewayInterface gateway) {
         this.dialog = dialog;
         this.gateway = gateway;
@@ -29,14 +36,13 @@ public class Listener implements ListenerInterface {
 
     @Override
     public boolean exec(String name, EventInterface event) {
-        if (((ElementEventInterface) event).getConfiguration() instanceof CircleConfiguration
-                && !(((ElementEventInterface) event).getConfiguration() instanceof SemiCircleConfigurationInterface)) {
+        if (((ElementEventInterface) event).getConfiguration() instanceof SemiCircleConfigurationInterface) {
             switch (name) {
                 case "element.edit":
                     this.dialog.edit(((ElementEventInterface) event).getConfiguration());
                     return true;
                 case "element.moved":
-                    return this.gateway.update("circle", ((ElementEventInterface) event).getConfiguration());
+                    return this.gateway.update("semicircle", ((ElementEventInterface) event).getConfiguration());
             }
         }
 

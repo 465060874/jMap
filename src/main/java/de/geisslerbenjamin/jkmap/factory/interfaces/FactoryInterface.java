@@ -126,4 +126,9 @@ public interface FactoryInterface {
      * @return
      */
     public SaveInterface getSaveDialog();
+
+    /**
+     * Open Microsoft Access and the corresponding database.
+     */
+    public void openFile();
 }

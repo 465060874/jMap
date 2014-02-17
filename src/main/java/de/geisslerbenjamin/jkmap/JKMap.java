@@ -45,6 +45,8 @@ public class JKMap extends Application {
                     .addElementFactory(new de.geisslerbenjamin.jkmap.rectangle.Factory())
                             // add circle support
                     .addElementFactory(new de.geisslerbenjamin.jkmap.circle.Factory())
+                            // add semi-circle support
+                    .addElementFactory(new de.geisslerbenjamin.jkmap.semicircle.Factory())
             ;
 
             // create navigation menu
@@ -74,6 +76,18 @@ public class JKMap extends Application {
                 }
             });
 
+            // open Microsoft Access
+            MenuItem menuDataAccess = new MenuItem(factory.getTranslate().translate("menu.data.access"));
+            menuDataAccess.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+            menuDataAccess.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent mouseEvent) {
+                    factory.openFile();
+                }
+            });
+
+            // exit
             MenuItem menuDataExit = new MenuItem(factory.getTranslate().translate("menu.data.exit"));
             menuDataExit.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
             menuDataExit.setOnAction(new EventHandler<ActionEvent>() {
@@ -82,7 +96,7 @@ public class JKMap extends Application {
                 }
             });
 
-            menuData.getItems().addAll(menuDataLoad, menuDataSave, new SeparatorMenuItem(), menuDataExit);
+            menuData.getItems().addAll(menuDataLoad, menuDataSave, menuDataAccess, new SeparatorMenuItem(), menuDataExit);
             menuBar.getMenus().add(menuData);
 
             // Menu to create new objects
