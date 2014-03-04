@@ -17,6 +17,8 @@ import de.geisslerbenjamin.jkmap.mediator.interfaces.MediatorInterface;
  * @licence MIT
  */
 public class RowParser extends ParseDrawable {
+    protected String type;
+
     /**
      * Constructor.
      *
@@ -25,6 +27,7 @@ public class RowParser extends ParseDrawable {
      */
     public RowParser(DrawableDisplayConfigurationInterface displayConfig, MediatorInterface mediator) {
         super(displayConfig, mediator);
+        this.type = "circle";
     }
 
     @Override
@@ -69,7 +72,7 @@ public class RowParser extends ParseDrawable {
                 .setRotation(config.getRotation())
                 .setColor(config.getColor())
                 .setTransparency(1.0)
-                .setType("circle")
+                .setType(this.type)
                 .setDiameter(((CircleConfigurationInterface) config).getDiameter());
     }
 

@@ -15,6 +15,7 @@ import de.geisslerbenjamin.jkmap.mediator.interfaces.MediatorInterface;
 public class RowParser extends de.geisslerbenjamin.jkmap.circle.RowParser {
     public RowParser(DrawableDisplayConfigurationInterface displayConfig, MediatorInterface mediator) {
         super(displayConfig, mediator);
+        this.type = "semicircle";
     }
 
     @Override
