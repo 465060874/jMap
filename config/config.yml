@@ -1,10 +1,3 @@
-image:
-    path: "D:\\Projekte\\Java\\map\\Data\\Full.jpg"
-    width: 1000
-    height: 800
-dataSource:
-    file: "D:\\Projekte\\Java\\map\\Data\\Data.mdb"
-    read: "T_MapDisplay"
-    write: "T_Map"
-language:
-    country: "DE"
+dataSource: {file: 'D:\Projekte\Java\map\Data\Data.mdb', table: T_Map}
+image: {height: 800, width: 1000, path: 'D:\Projekte\Java\map\Data\Full.jpg', factor: 16.5}
+language: {country: DE}

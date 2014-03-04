@@ -1,0 +1,10 @@
+dataSource:
+  file: 'data.mdb',
+  table: map
+image: 
+  height: 800
+  width: 1000
+  path: 'image.jpg'
+  factor: 16.5
+language: 
+  country: DE

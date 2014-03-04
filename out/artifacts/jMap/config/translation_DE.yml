@@ -40,8 +40,8 @@
 "config.error.database": "Die angegebene Datenbank-Datei ist nicht vorhanden!"
 "config.error.table": "Die angegebene Tabelle ist nicht in der Datenbank vorhanden!"
 "config.error.factor": "Es ist nicht angegeben, wieviel Pixel auf dem Bild 1 m entsprechen!"
-"config.error.width": "Die Breite der Bild-Anzeige ist nicht angegeben!"
-"config.error.height": "Die Höhe der Bild-Anzeige ist nicht angegeben!"
+"config.error.width": "Die Breite des Bild-Dialogs ist nicht angegeben!"
+"config.error.height": "Die Höhe des Bild-Dialogs ist nicht angegeben!"
 
 "element.id": "ID"
 "dialog.error" : "Fehler!"
